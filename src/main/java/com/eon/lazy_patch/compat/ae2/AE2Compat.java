@@ -16,5 +16,8 @@ public class AE2Compat {
 
     public static void addCreativeTabItems(CreativeModeTab.Output output) {
         output.accept(AE2Items.INFINITY_LIQUID_SCULK_MATTER_CELL.get());
+        output.accept(AE2Items.INFINITY_LIQUID_DRAGON_BREATH_CELL.get());
+        output.accept(AE2Items.INFINITY_ETHER_GAS_CELL.get());
+        output.accept(AE2Items.INFINITY_PINK_SLIME_CELL.get());
     }
 }

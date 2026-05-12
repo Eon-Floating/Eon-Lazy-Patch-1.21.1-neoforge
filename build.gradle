@@ -28,6 +28,7 @@ sourceSets.main.resources {
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    mavenCentral()
 }
 
 base {
@@ -118,6 +119,7 @@ configurations {
 }
 
 dependencies {
+    compileOnly "org.appliedenergistics:appliedenergistics2:19.2.17"
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
     localRuntime fileTree(dir: 'libs', include: ['*.jar'])
 

@@ -1,6 +1,9 @@
 {
   "item.eon_lazy_patch.misc.eon_star": "Eon 之星",
   "item.eon_lazy_patch.ae2.infinity_liquid_sculk_matter_cell": "ME 无限液态幽匿物质元件",
+  "item.eon_lazy_patch.ae2.infinity_liquid_dragon_breath_cell": "ME 无限液态龙息元件",
+  "item.eon_lazy_patch.ae2.infinity_ether_gas_cell": "ME 无限以太气体元件",
+  "item.eon_lazy_patch.ae2.infinity_pink_slime_cell": "ME 无限粉色史莱姆液元件",
   "item.eon_lazy_patch.infinity_fluid_cell": "ME 无限%s元件",
   "itemGroup.eon_lazy_patch": "Eon 懒人补丁",
   "tooltip.eon_lazy_patch.infinity_fluid_cell": "向 ME 网络提供近乎无限的指定流体。",

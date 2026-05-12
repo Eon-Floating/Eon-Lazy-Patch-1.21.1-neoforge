@@ -1,6 +1,9 @@
 {
   "item.eon_lazy_patch.misc.eon_star": "Eon Star",
   "item.eon_lazy_patch.ae2.infinity_liquid_sculk_matter_cell": "ME Infinity Liquid Sculk Matter Cell",
+  "item.eon_lazy_patch.ae2.infinity_liquid_dragon_breath_cell": "ME Infinity Liquid Dragon Breath Cell",
+  "item.eon_lazy_patch.ae2.infinity_ether_gas_cell": "ME Infinity Ether Gas Cell",
+  "item.eon_lazy_patch.ae2.infinity_pink_slime_cell": "ME Infinity Pink Slime Cell",
   "item.eon_lazy_patch.infinity_fluid_cell": "ME Infinity %s Cell",
   "itemGroup.eon_lazy_patch": "Eon Lazy Patch",
   "tooltip.eon_lazy_patch.infinity_fluid_cell": "Provides an effectively infinite amount of its recorded fluid to ME networks.",
