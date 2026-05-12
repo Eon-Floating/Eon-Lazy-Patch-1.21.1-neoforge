@@ -1,11 +1,12 @@
 {
   "item.eon_lazy_patch.misc.eon_star": "Eon 之星",
+  "itemGroup.eon_lazy_patch": "Eon 懒人补丁",
 
-  "eon_lazy_patch.configuration.title": "Eon Lazy Patch Configs",
-  "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml": "Eon Lazy Patch Configs",
-  "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml.title": "Eon Lazy Patch Configs",
-  "eon_lazy_patch.configuration.items": "Item List",
-  "eon_lazy_patch.configuration.logDirtBlock": "Log Dirt Block",
-  "eon_lazy_patch.configuration.magicNumberIntroduction": "Magic Number Text",
-  "eon_lazy_patch.configuration.magicNumber": "Magic Number"
+  "eon_lazy_patch.configuration.title": "Eon Lazy Patch 配置",
+  "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml": "Eon Lazy Patch 配置",
+  "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml.title": "Eon Lazy Patch 配置",
+  "eon_lazy_patch.configuration.items": "物品列表",
+  "eon_lazy_patch.configuration.logDirtBlock": "记录泥土方块",
+  "eon_lazy_patch.configuration.magicNumberIntroduction": "魔法数字文本",
+  "eon_lazy_patch.configuration.magicNumber": "魔法数字"
 }

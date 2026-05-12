@@ -1,5 +1,6 @@
 {
   "item.eon_lazy_patch.misc.eon_star": "Eon Star",
+  "itemGroup.eon_lazy_patch": "Eon Lazy Patch",
 
   "eon_lazy_patch.configuration.title": "Eon Lazy Patch Configs",
   "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml": "Eon Lazy Patch Configs",
