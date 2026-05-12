@@ -1,8 +1,10 @@
 package com.eon.lazy_patch;
 
+import com.eon.lazy_patch.compat.ae2.AE2ClientCompat;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
@@ -27,5 +29,8 @@ public class EonLazyPatchClient {
         // Some client setup code
         EonLazyPatch.LOGGER.info("HELLO FROM CLIENT SETUP");
         EonLazyPatch.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        if (ModList.get().isLoaded("ae2")) {
+            AE2ClientCompat.init(event);
+        }
     }
 }

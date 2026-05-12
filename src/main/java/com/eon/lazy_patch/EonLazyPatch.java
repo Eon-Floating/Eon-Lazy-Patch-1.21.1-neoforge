@@ -1,5 +1,6 @@
 package com.eon.lazy_patch;
 
+import com.eon.lazy_patch.compat.ae2.AE2Compat;
 import com.eon.lazy_patch.item.ModCreativeModeTabs;
 import com.eon.lazy_patch.item.ModItems;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
@@ -32,6 +34,9 @@ public class EonLazyPatch {
         modEventBus.addListener(this::commonSetup);
 
         ModItems.register(modEventBus);
+        if (ModList.get().isLoaded("ae2")) {
+            AE2Compat.register(modEventBus);
+        }
         ModCreativeModeTabs.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
@@ -46,6 +51,9 @@ public class EonLazyPatch {
     private void commonSetup(FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
+        if (ModList.get().isLoaded("ae2")) {
+            AE2Compat.init(event);
+        }
 
         if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
             LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));

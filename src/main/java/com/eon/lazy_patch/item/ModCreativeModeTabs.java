@@ -1,11 +1,13 @@
 package com.eon.lazy_patch.item;
 
 import com.eon.lazy_patch.EonLazyPatch;
+import com.eon.lazy_patch.compat.ae2.AE2Compat;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -20,6 +22,9 @@ public class ModCreativeModeTabs {
                     .icon(() -> ModItems.EON_STAR.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.EON_STAR.get());
+                        if (ModList.get().isLoaded("ae2")) {
+                            AE2Compat.addCreativeTabItems(output);
+                        }
                     })
                     .build());
 

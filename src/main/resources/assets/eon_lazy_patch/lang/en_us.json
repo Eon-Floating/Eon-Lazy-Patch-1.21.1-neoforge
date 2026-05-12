@@ -1,6 +1,9 @@
 {
   "item.eon_lazy_patch.misc.eon_star": "Eon Star",
+  "item.eon_lazy_patch.ae2.infinity_liquid_sculk_matter_cell": "ME Infinity Liquid Sculk Matter Cell",
+  "item.eon_lazy_patch.infinity_fluid_cell": "ME Infinity %s Cell",
   "itemGroup.eon_lazy_patch": "Eon Lazy Patch",
+  "tooltip.eon_lazy_patch.infinity_fluid_cell": "Provides an effectively infinite amount of its recorded fluid to ME networks.",
 
   "eon_lazy_patch.configuration.title": "Eon Lazy Patch Configs",
   "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml": "Eon Lazy Patch Configs",
