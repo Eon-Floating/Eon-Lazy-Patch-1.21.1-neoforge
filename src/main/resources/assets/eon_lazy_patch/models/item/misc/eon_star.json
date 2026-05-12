@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "eon_lazy_patch:item/misc/eon_star"
+  }
+}
