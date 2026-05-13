@@ -19,5 +19,9 @@ public class AE2Compat {
         output.accept(AE2Items.INFINITY_LIQUID_DRAGON_BREATH_CELL.get());
         output.accept(AE2Items.INFINITY_ETHER_GAS_CELL.get());
         output.accept(AE2Items.INFINITY_PINK_SLIME_CELL.get());
+        output.accept(AE2Items.LIQUID_SCULK_MATTER_CALIBRATION_CORE.get());
+        output.accept(AE2Items.LIQUID_DRAGON_BREATH_CALIBRATION_CORE.get());
+        output.accept(AE2Items.ETHER_GAS_CALIBRATION_CORE.get());
+        output.accept(AE2Items.PINK_SLIME_CALIBRATION_CORE.get());
     }
 }

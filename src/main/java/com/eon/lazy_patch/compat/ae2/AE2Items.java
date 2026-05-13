@@ -23,6 +23,14 @@ public class AE2Items {
     public static final DeferredItem<Item> INFINITY_PINK_SLIME_CELL =
             ITEMS.register("ae2/infinity_pink_slime_cell", () -> new EonInfinityFluidCellItem(
                     ResourceLocation.fromNamespaceAndPath("industrialforegoing", "pink_slime")));
+    public static final DeferredItem<Item> LIQUID_SCULK_MATTER_CALIBRATION_CORE =
+            ITEMS.register("ae2/liquid_sculk_matter_calibration_core", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LIQUID_DRAGON_BREATH_CALIBRATION_CORE =
+            ITEMS.register("ae2/liquid_dragon_breath_calibration_core", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ETHER_GAS_CALIBRATION_CORE =
+            ITEMS.register("ae2/ether_gas_calibration_core", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PINK_SLIME_CALIBRATION_CORE =
+            ITEMS.register("ae2/pink_slime_calibration_core", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "eon_lazy_patch:item/ae2/liquid_sculk_matter_calibration_core"
+  }
+}
