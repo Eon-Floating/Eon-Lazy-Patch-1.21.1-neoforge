@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                     .icon(() -> ModItems.EON_STAR.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.EON_STAR.get());
+                        output.accept(ModItems.EXPERIENCE_CRYSTAL.get());
                         if (ModList.get().isLoaded("ae2")) {
                             AE2Compat.addCreativeTabItems(output);
                         }
