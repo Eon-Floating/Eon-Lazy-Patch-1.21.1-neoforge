@@ -14,6 +14,7 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, EonLazyPatch.MODID);
 
+    @SuppressWarnings("DataFlowIssue")
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ExperienceInfuserBlockEntity>> EXPERIENCE_INFUSER =
             BLOCK_ENTITIES.register("experience_infuser", () -> BlockEntityType.Builder.of(
                     ExperienceInfuserBlockEntity::new,

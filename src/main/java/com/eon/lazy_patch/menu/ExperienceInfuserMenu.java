@@ -12,10 +12,11 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class ExperienceInfuserMenu extends AbstractContainerMenu {
     public static final int CRYSTAL_SLOT = 0;
@@ -28,11 +29,14 @@ public class ExperienceInfuserMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public ExperienceInfuserMenu(int containerId, Inventory playerInventory, RegistryFriendlyByteBuf extraData) {
-        this(containerId, playerInventory, getItemHandler(playerInventory, extraData), new SimpleContainerData(2), ContainerLevelAccess.NULL);
+        this(containerId, playerInventory, getItemHandler(playerInventory, extraData), new SimpleContainerData(3), ContainerLevelAccess.NULL);
     }
 
     public ExperienceInfuserMenu(int containerId, Inventory playerInventory, ExperienceInfuserBlockEntity blockEntity, ContainerData data) {
-        this(containerId, playerInventory, blockEntity.getItemHandler(), data, ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos()));
+        this(containerId, playerInventory, blockEntity.getItemHandler(), data, ContainerLevelAccess.create(
+                Objects.requireNonNull(blockEntity.getLevel()),
+                blockEntity.getBlockPos()
+        ));
     }
 
     private ExperienceInfuserMenu(
@@ -57,6 +61,10 @@ public class ExperienceInfuserMenu extends AbstractContainerMenu {
 
     public int getFluidCapacity() {
         return data.get(1);
+    }
+
+    public int getFluidId() {
+        return data.get(2);
     }
 
     public ItemStack getCrystalStack() {
@@ -116,12 +124,12 @@ public class ExperienceInfuserMenu extends AbstractContainerMenu {
         }
     }
 
+    @SuppressWarnings("resource")
     private static ItemStackHandler getItemHandler(Inventory playerInventory, RegistryFriendlyByteBuf extraData) {
         if (extraData == null) {
             return new ItemStackHandler(1);
         }
-        BlockEntity blockEntity = playerInventory.player.level().getBlockEntity(extraData.readBlockPos());
-        if (blockEntity instanceof ExperienceInfuserBlockEntity infuser) {
+        if (playerInventory.player.level().getBlockEntity(extraData.readBlockPos()) instanceof ExperienceInfuserBlockEntity infuser) {
             return infuser.getItemHandler();
         }
         return new ItemStackHandler(1);

@@ -17,6 +17,7 @@
   "tooltip.eon_lazy_patch.experience_crystal.use": "右键：取出最多 30 级跨度的经验。",
   "tooltip.eon_lazy_patch.experience_crystal.sneak_use": "潜行右键：存入最多 30 级跨度的经验。",
   "tooltip.eon_lazy_patch.experience_infuser.fluid": "经验流体",
+  "tooltip.eon_lazy_patch.experience_infuser.empty": "空",
 
   "eon_lazy_patch.configuration.title": "Eon Lazy Patch 配置",
   "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml": "Eon Lazy Patch 配置",

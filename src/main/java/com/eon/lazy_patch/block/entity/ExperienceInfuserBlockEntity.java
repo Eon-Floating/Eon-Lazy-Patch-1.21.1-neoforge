@@ -4,6 +4,7 @@ import com.eon.lazy_patch.item.custom.ExperienceCrystalItem;
 import com.eon.lazy_patch.menu.ExperienceInfuserMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
@@ -16,7 +17,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
@@ -58,6 +58,7 @@ public class ExperienceInfuserBlockEntity extends BlockEntity implements MenuPro
             return switch (index) {
                 case 0 -> fluidTank.getFluidAmount();
                 case 1 -> fluidTank.getCapacity();
+                case 2 -> fluidTank.getFluid().isEmpty() ? -1 : BuiltInRegistries.FLUID.getId(fluidTank.getFluid().getFluid());
                 default -> 0;
             };
         }
@@ -68,7 +69,7 @@ public class ExperienceInfuserBlockEntity extends BlockEntity implements MenuPro
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     };
 
@@ -76,6 +77,7 @@ public class ExperienceInfuserBlockEntity extends BlockEntity implements MenuPro
         super(ModBlockEntities.EXPERIENCE_INFUSER.get(), pos, blockState);
     }
 
+    @SuppressWarnings("unused")
     public static void serverTick(Level level, BlockPos pos, BlockState state, ExperienceInfuserBlockEntity blockEntity) {
         blockEntity.chargeCrystal();
     }
@@ -86,10 +88,6 @@ public class ExperienceInfuserBlockEntity extends BlockEntity implements MenuPro
 
     public IFluidHandler getFluidHandler() {
         return fluidTank;
-    }
-
-    public ContainerData getData() {
-        return data;
     }
 
     public void dropContents() {

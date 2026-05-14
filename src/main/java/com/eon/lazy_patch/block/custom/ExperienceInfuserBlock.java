@@ -34,7 +34,7 @@ public class ExperienceInfuserBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected @NotNull RenderShape getRenderShape(BlockState state) {
+    protected @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
         return RenderShape.MODEL;
     }
 
