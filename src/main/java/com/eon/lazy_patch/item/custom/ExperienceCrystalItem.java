@@ -28,15 +28,16 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class ExperienceCrystalItem extends Item {
     private static final String STORED_XP_KEY = "StoredXp";
-    private static final int MAX_STORED_XP = 1_000_000;
+    public static final int MAX_STORED_XP = 1_000_000;
     private static final int MAX_LEVEL_SPAN = 30;
-    private static final int MILLIBUCKETS_PER_XP = 20;
-    private static final TagKey<Fluid> EXPERIENCE_FLUIDS = TagKey.create(
+    public static final int MILLIBUCKETS_PER_XP = 20;
+    public static final TagKey<Fluid> EXPERIENCE_FLUIDS = TagKey.create(
             Registries.FLUID,
             ResourceLocation.fromNamespaceAndPath("c", "experience")
     );
@@ -46,7 +47,11 @@ public class ExperienceCrystalItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(
+            @NotNull Level level,
+            @NotNull Player player,
+            @NotNull InteractionHand usedHand
+    ) {
         ItemStack stack = player.getItemInHand(usedHand);
         if (level.isClientSide) {
             return InteractionResultHolder.sidedSuccess(stack, true);
@@ -62,7 +67,7 @@ public class ExperienceCrystalItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult useOn(@NotNull UseOnContext context) {
         Level level = context.getLevel();
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;
@@ -79,7 +84,12 @@ public class ExperienceCrystalItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(
+            @NotNull ItemStack stack,
+            @NotNull TooltipContext context,
+            @NotNull List<Component> tooltip,
+            @NotNull TooltipFlag flag
+    ) {
         int storedXp = getStoredXp(stack);
         tooltip.add(Component.translatable("tooltip.eon_lazy_patch.experience_crystal.stored", storedXp, MAX_STORED_XP)
                 .withStyle(ChatFormatting.GREEN));
@@ -93,7 +103,7 @@ public class ExperienceCrystalItem extends Item {
         int storedXp = getStoredXp(stack);
         int freeSpace = MAX_STORED_XP - storedXp;
         int currentXp = getPlayerTotalXp(player);
-        int targetXp = getXpAfterLosingLevels(player, MAX_LEVEL_SPAN);
+        int targetXp = getXpAfterLosingLevels(player);
         int transferable = Math.min(Math.min(currentXp - targetXp, freeSpace), currentXp);
         if (transferable <= 0) {
             return 0;
@@ -107,7 +117,7 @@ public class ExperienceCrystalItem extends Item {
     private static int withdrawExperience(ItemStack stack, Player player) {
         int storedXp = getStoredXp(stack);
         int currentXp = getPlayerTotalXp(player);
-        int targetXp = getXpAfterGainingLevels(player, MAX_LEVEL_SPAN);
+        int targetXp = getXpAfterGainingLevels(player);
         int transferLimit = targetXp - currentXp;
         int transferable = Math.min(storedXp, transferLimit);
         if (transferable <= 0) {
@@ -168,9 +178,20 @@ public class ExperienceCrystalItem extends Item {
         return FluidStack.EMPTY;
     }
 
-    private static int getStoredXp(ItemStack stack) {
+    public static int getStoredXp(ItemStack stack) {
         CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
         return Math.clamp(customData.copyTag().getInt(STORED_XP_KEY), 0, MAX_STORED_XP);
+    }
+
+    public static int addStoredXp(ItemStack stack, int amount) {
+        int storedXp = getStoredXp(stack);
+        int transferable = Math.min(Math.max(amount, 0), MAX_STORED_XP - storedXp);
+        if (transferable <= 0) {
+            return 0;
+        }
+
+        setStoredXp(stack, storedXp + transferable);
+        return transferable;
     }
 
     private static void setStoredXp(ItemStack stack, int storedXp) {
@@ -191,18 +212,18 @@ public class ExperienceCrystalItem extends Item {
                 + Math.round(player.experienceProgress * getXpNeededForNextLevel(player.experienceLevel));
     }
 
-    private static int getXpAfterGainingLevels(Player player, int levelSpan) {
-        int targetLevel = player.experienceLevel + levelSpan;
+    private static int getXpAfterGainingLevels(Player player) {
+        int targetLevel = player.experienceLevel + MAX_LEVEL_SPAN;
         return getTotalXpForLevel(targetLevel)
                 + Math.round(player.experienceProgress * getXpNeededForNextLevel(targetLevel));
     }
 
-    private static int getXpAfterLosingLevels(Player player, int levelSpan) {
-        if (player.experienceLevel <= levelSpan) {
+    private static int getXpAfterLosingLevels(Player player) {
+        if (player.experienceLevel <= MAX_LEVEL_SPAN) {
             return 0;
         }
 
-        int targetLevel = player.experienceLevel - levelSpan;
+        int targetLevel = player.experienceLevel - MAX_LEVEL_SPAN;
         return getTotalXpForLevel(targetLevel)
                 + Math.round(player.experienceProgress * getXpNeededForNextLevel(targetLevel));
     }

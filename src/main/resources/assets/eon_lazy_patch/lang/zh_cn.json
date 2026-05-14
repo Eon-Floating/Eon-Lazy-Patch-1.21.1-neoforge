@@ -1,6 +1,7 @@
 {
   "item.eon_lazy_patch.misc.eon_star": "Eon 之星",
   "item.eon_lazy_patch.experience_crystal": "经验水晶",
+  "block.eon_lazy_patch.experience_infuser": "经验灌注器",
   "item.eon_lazy_patch.ae2.infinity_liquid_sculk_matter_cell": "ME 无限液态幽匿物质元件",
   "item.eon_lazy_patch.ae2.infinity_liquid_dragon_breath_cell": "ME 无限液态龙息元件",
   "item.eon_lazy_patch.ae2.infinity_ether_gas_cell": "ME 无限以太气体元件",
@@ -15,6 +16,7 @@
   "tooltip.eon_lazy_patch.experience_crystal.stored": "储存经验：%s / %s",
   "tooltip.eon_lazy_patch.experience_crystal.use": "右键：取出最多 30 级跨度的经验。",
   "tooltip.eon_lazy_patch.experience_crystal.sneak_use": "潜行右键：存入最多 30 级跨度的经验。",
+  "tooltip.eon_lazy_patch.experience_infuser.fluid": "经验流体",
 
   "eon_lazy_patch.configuration.title": "Eon Lazy Patch 配置",
   "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml": "Eon Lazy Patch 配置",

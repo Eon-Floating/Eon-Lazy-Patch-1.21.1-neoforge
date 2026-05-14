@@ -1,8 +1,11 @@
 package com.eon.lazy_patch;
 
 import com.eon.lazy_patch.compat.ae2.AE2Compat;
+import com.eon.lazy_patch.block.ModBlocks;
+import com.eon.lazy_patch.block.entity.ModBlockEntities;
 import com.eon.lazy_patch.item.ModCreativeModeTabs;
 import com.eon.lazy_patch.item.ModItems;
+import com.eon.lazy_patch.menu.ModMenuTypes;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -32,8 +35,12 @@ public class EonLazyPatch {
     public EonLazyPatch(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(ModBlockEntities::registerCapabilities);
 
+        ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
         if (ModList.get().isLoaded("ae2")) {
             AE2Compat.register(modEventBus);
         }

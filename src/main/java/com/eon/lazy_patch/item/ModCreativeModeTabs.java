@@ -15,6 +15,7 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, EonLazyPatch.MODID);
 
+    @SuppressWarnings("unused")
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EON_LAZY_PATCH_TAB =
             CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.eon_lazy_patch"))
@@ -23,6 +24,7 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.EON_STAR.get());
                         output.accept(ModItems.EXPERIENCE_CRYSTAL.get());
+                        output.accept(ModItems.EXPERIENCE_INFUSER.get());
                         if (ModList.get().isLoaded("ae2")) {
                             AE2Compat.addCreativeTabItems(output);
                         }

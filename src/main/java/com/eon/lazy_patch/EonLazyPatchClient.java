@@ -1,6 +1,8 @@
 package com.eon.lazy_patch;
 
+import com.eon.lazy_patch.client.gui.ExperienceInfuserScreen;
 import com.eon.lazy_patch.compat.ae2.AE2ClientCompat;
+import com.eon.lazy_patch.menu.ModMenuTypes;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -9,6 +11,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -32,5 +35,10 @@ public class EonLazyPatchClient {
         if (ModList.get().isLoaded("ae2")) {
             AE2ClientCompat.init(event);
         }
+    }
+
+    @SubscribeEvent
+    static void registerScreens(RegisterMenuScreensEvent event) {
+        event.register(ModMenuTypes.EXPERIENCE_INFUSER.get(), ExperienceInfuserScreen::new);
     }
 }
