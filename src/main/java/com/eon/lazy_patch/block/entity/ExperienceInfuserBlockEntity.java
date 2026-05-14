@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ExperienceInfuserBlockEntity extends BlockEntity implements MenuProvider {
-    public static final int TANK_CAPACITY = 64_000;
+    public static final int TANK_CAPACITY = 4_096_000;
     private static final String ITEMS_KEY = "Items";
     private static final String FLUID_KEY = "FluidTank";
 

@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -97,6 +98,22 @@ public class ExperienceCrystalItem extends Item {
                 .withStyle(ChatFormatting.GRAY));
         tooltip.add(Component.translatable("tooltip.eon_lazy_patch.experience_crystal.sneak_use")
                 .withStyle(ChatFormatting.GRAY));
+    }
+
+    @Override
+    public boolean isBarVisible(@NotNull ItemStack stack) {
+        return getStoredXp(stack) > 0;
+    }
+
+    @Override
+    public int getBarWidth(@NotNull ItemStack stack) {
+        return Math.round(Item.MAX_BAR_WIDTH * (getStoredXp(stack) / (float) MAX_STORED_XP));
+    }
+
+    @Override
+    public int getBarColor(@NotNull ItemStack stack) {
+        float fill = getStoredXp(stack) / (float) MAX_STORED_XP;
+        return Mth.hsvToRgb(0.33f + fill * 0.13f, 0.85f, 1.0f);
     }
 
     private static int storeExperience(ItemStack stack, Player player) {

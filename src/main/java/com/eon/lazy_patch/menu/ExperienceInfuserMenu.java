@@ -50,7 +50,7 @@ public class ExperienceInfuserMenu extends AbstractContainerMenu {
         this.access = access;
         this.data = data;
 
-        addSlot(new SlotItemHandler(itemHandler, CRYSTAL_SLOT, 80, 35));
+        addSlot(new SlotItemHandler(itemHandler, CRYSTAL_SLOT, 141, 51));
         addPlayerInventory(playerInventory);
         addDataSlots(data);
     }
@@ -115,12 +115,12 @@ public class ExperienceInfuserMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
-                addSlot(new Slot(playerInventory, column + row * 9 + 9, 8 + column * 18, 84 + row * 18));
+                addSlot(new Slot(playerInventory, column + row * 9 + 9, 8 + column * 18, 108 + row * 18));
             }
         }
 
         for (int column = 0; column < 9; column++) {
-            addSlot(new Slot(playerInventory, column, 8 + column * 18, 142));
+            addSlot(new Slot(playerInventory, column, 8 + column * 18, 166));
         }
     }
 
