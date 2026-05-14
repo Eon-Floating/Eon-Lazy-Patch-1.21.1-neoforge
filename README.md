@@ -1,25 +1,88 @@
+# Eon Lazy Patch
 
-Installation information
-=======
+> 一个面向 `Minecraft Java Edition 1.21.1` 的轻量整合补丁，专门补上我自己整合包里最想省掉、最想自动化的那部分内容。
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+`Eon Lazy Patch` 目前主要围绕经验存储、经验液体转化，以及 `AE2` 的无尽流体元件适配展开。它不是大型内容模组，更像是一个实用型工具包，用来把一些繁琐、重复、又特别适合自动化的流程收束起来。
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+## 简介
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+这个模组的目标很直接：
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+- 把经验收集、存储、转移做得更顺手
+- 让部分高价值流体可以更方便地量产和接入 `AE2`
+- 尽量保持功能清晰，少一点折腾，多一点可用性
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+它更适合休闲整合包、养老向存档、建筑向玩法，以及希望把科技链条做得更顺但又不想太硬核的场景。
+
+## 主要内容
+
+### 经验系统
+
+- `经验水晶`
+- 支持从玩家身上存取经验
+- 支持对接经验流体进行充能
+- 物品栏里会显示充能条
+
+### 经验灌注器
+
+- 可以存储经验流体
+- 支持把经验水晶放进去自动充能
+- 支持管道输入经验流体
+- 适合做经验的集中缓冲和自动化
+
+### `AE2` 无尽流体元件
+
+- `ME` 无限液态幽匿物质元件
+- `ME` 无限液态龙息元件
+- `ME` 无限以太气体元件
+- `ME` 无限粉色史莱姆液元件
+
+这些元件面向 `AE2` 网络使用，适合把某些难产、难管、但你又经常要用的流体直接纳入自动化体系。
+
+## 兼容性
+
+- `Minecraft 1.21.1`
+- `NeoForge 21.1.228`
+- `AE2` 为可选前置
+
+如果安装了 `AE2`，相关适配内容会自动启用。没有安装也不影响其他功能。
+
+## 运行方式
+
+如果你只是想本地测试：
+
+1. 克隆或下载仓库
+2. 用支持 `NeoForge` 的 IDE 打开
+3. 按普通 `Gradle` 工程运行客户端
+
+如果你碰到依赖没刷出来，可以先尝试：
+
+```bash
+./gradlew --refresh-dependencies
+```
+
+## 开发信息
+
+- Mod ID: `eon_lazy_patch`
+- Mod Name: `Eon Lazy Patch`
+- 当前版本: `1.0.0-1.21.1`
+- 语言: Java
+
+## 截图
+
+项目后续会补一些实际运行截图。当前以功能实现和交互稳定为主。
+
+## 许可
+
+本项目源码许可为 `MIT License`。
+
+项目中部分 GUI 资源参考并转存自其他模组，相关素材许可和来源说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
+## 反馈
+
+如果你在使用过程中遇到问题，或者想加别的逃课功能，可以直接提 issue 或继续在这个仓库里聊。
+
+---
+
+这个项目本质上很朴素，就是把“我不想手动做的事”变成“让机器去做”。  
+如果它能让你的整合包少一点重复劳动，那它就算完成任务了。

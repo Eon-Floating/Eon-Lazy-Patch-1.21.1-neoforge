@@ -15,13 +15,19 @@ public class AE2Compat {
     }
 
     public static void addCreativeTabItems(CreativeModeTab.Output output) {
-        output.accept(AE2Items.INFINITY_LIQUID_SCULK_MATTER_CELL.get());
-        output.accept(AE2Items.INFINITY_LIQUID_DRAGON_BREATH_CELL.get());
-        output.accept(AE2Items.INFINITY_ETHER_GAS_CELL.get());
-        output.accept(AE2Items.INFINITY_PINK_SLIME_CELL.get());
-        output.accept(AE2Items.LIQUID_SCULK_MATTER_CALIBRATION_CORE.get());
-        output.accept(AE2Items.LIQUID_DRAGON_BREATH_CALIBRATION_CORE.get());
-        output.accept(AE2Items.ETHER_GAS_CALIBRATION_CORE.get());
-        output.accept(AE2Items.PINK_SLIME_CALIBRATION_CORE.get());
+        addIfPresent(output, AE2Items.INFINITY_LIQUID_SCULK_MATTER_CELL);
+        addIfPresent(output, AE2Items.INFINITY_LIQUID_DRAGON_BREATH_CELL);
+        addIfPresent(output, AE2Items.INFINITY_ETHER_GAS_CELL);
+        addIfPresent(output, AE2Items.INFINITY_PINK_SLIME_CELL);
+        addIfPresent(output, AE2Items.LIQUID_SCULK_MATTER_CALIBRATION_CORE);
+        addIfPresent(output, AE2Items.LIQUID_DRAGON_BREATH_CALIBRATION_CORE);
+        addIfPresent(output, AE2Items.ETHER_GAS_CALIBRATION_CORE);
+        addIfPresent(output, AE2Items.PINK_SLIME_CALIBRATION_CORE);
+    }
+
+    private static void addIfPresent(CreativeModeTab.Output output, net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.Item> item) {
+        if (item != null) {
+            output.accept(item.get());
+        }
     }
 }
