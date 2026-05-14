@@ -67,10 +67,6 @@ public class ExperienceInfuserMenu extends AbstractContainerMenu {
         return data.get(2);
     }
 
-    public ItemStack getCrystalStack() {
-        return getSlot(CRYSTAL_SLOT).getItem();
-    }
-
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
         ItemStack result = ItemStack.EMPTY;

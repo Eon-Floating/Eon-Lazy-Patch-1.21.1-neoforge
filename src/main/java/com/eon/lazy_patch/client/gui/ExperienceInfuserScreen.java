@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceInfuserMenu> {
     private static final ResourceLocation MEKANISM_BASE = ResourceLocation.fromNamespaceAndPath(
@@ -30,10 +31,6 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
             EonLazyPatch.MODID,
             "textures/gui/vendor/mekanism/slot/normal.png"
     );
-    private static final ResourceLocation MEKANISM_GAUGE = ResourceLocation.fromNamespaceAndPath(
-            EonLazyPatch.MODID,
-            "textures/gui/vendor/mekanism/gauge/normal.png"
-    );
     private static final int TANK_BACK_COLOR = 0xFF8B8B8B;
     private static final int TANK_X = 34;
     private static final int TANK_Y = 32;
@@ -41,6 +38,10 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
     private static final int TANK_HEIGHT = 58;
     private static final int TANK_INSET = 1;
     private static final int TANK_TICK_COUNT = 7;
+    private static final int TANK_TICK_LENGTH = 10;
+    private static final int TANK_BORDER_DARK = 0xFF4D4D4D;
+    private static final int TANK_BORDER_LIGHT = 0xFFFFFFFF;
+    private static final int TANK_TICK_COLOR = 0xFF202020;
 
     public ExperienceInfuserScreen(ExperienceInfuserMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -74,7 +75,6 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
     protected void renderLabels(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY) {
         guiGraphics.drawString(font, title, titleLabelX, titleLabelY, 0x404040, false);
         guiGraphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0x404040, false);
-
     }
 
     private void drawSlot(GuiGraphics guiGraphics, int x, int y) {
@@ -94,8 +94,7 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
     }
 
     private void drawFluidTank(GuiGraphics guiGraphics, int x, int y) {
-        drawTankBackground(guiGraphics, x, y, TANK_WIDTH, TANK_HEIGHT);
-        drawTankOverlay(guiGraphics, x, y, TANK_WIDTH, TANK_HEIGHT);
+        drawTankBackground(guiGraphics, x, y);
 
         int innerX = x + TANK_INSET;
         int innerY = y + TANK_INSET;
@@ -109,21 +108,21 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
         if (height > 0) {
             drawFluid(guiGraphics, innerX, innerY + innerHeight - height, innerWidth, height);
         }
-        drawTankOverlay(guiGraphics, x, y, TANK_WIDTH, TANK_HEIGHT);
+        drawTankOverlay(guiGraphics, x, y);
     }
 
-    private void drawTankBackground(GuiGraphics guiGraphics, int x, int y, int width, int height) {
-        guiGraphics.fill(x, y, x + width, y + height, TANK_BACK_COLOR);
+    private void drawTankBackground(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.fill(x, y, x + TANK_WIDTH, y + TANK_HEIGHT, TANK_BACK_COLOR);
     }
 
-    private void drawTankOverlay(GuiGraphics guiGraphics, int x, int y, int width, int height) {
-        guiGraphics.fill(x, y, x + width - 1, y + 1, 0xFF4D4D4D);
-        guiGraphics.fill(x, y, x + 1, y + height - 1, 0xFF4D4D4D);
-        guiGraphics.fill(x + 1, y + height - 1, x + width, y + height, 0xFFFFFFFF);
-        guiGraphics.fill(x + width - 1, y + 1, x + width, y + height, 0xFFFFFFFF);
+    private void drawTankOverlay(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.fill(x, y, x + TANK_WIDTH - 1, y + 1, TANK_BORDER_DARK);
+        guiGraphics.fill(x, y, x + 1, y + TANK_HEIGHT - 1, TANK_BORDER_DARK);
+        guiGraphics.fill(x + 1, y + TANK_HEIGHT - 1, x + TANK_WIDTH, y + TANK_HEIGHT, TANK_BORDER_LIGHT);
+        guiGraphics.fill(x + TANK_WIDTH - 1, y + 1, x + TANK_WIDTH, y + TANK_HEIGHT, TANK_BORDER_LIGHT);
         for (int tick = 1; tick <= TANK_TICK_COUNT; tick++) {
-            int tickY = y + tick * height / (TANK_TICK_COUNT + 1);
-            guiGraphics.fill(x, tickY, x + 10, tickY + 1, 0xFF202020);
+            int tickY = y + tick * TANK_HEIGHT / (TANK_TICK_COUNT + 1);
+            guiGraphics.fill(x, tickY, x + TANK_TICK_LENGTH, tickY + 1, TANK_TICK_COLOR);
         }
     }
 
@@ -131,11 +130,7 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
         Fluid fluid = getFluid();
         FluidStack fluidStack = new FluidStack(fluid, Math.max(1, menu.getFluidAmount()));
         IClientFluidTypeExtensions fluidClient = IClientFluidTypeExtensions.of(fluid);
-        ResourceLocation stillTexture = fluidClient.getStillTexture(fluidStack);
-        if (stillTexture == null) {
-            guiGraphics.fill(x, y, x + width, y + height, 0xFF47D46A);
-            return;
-        }
+        ResourceLocation stillTexture = Objects.requireNonNull(fluidClient.getStillTexture(fluidStack));
 
         TextureAtlasSprite sprite = Minecraft.getInstance()
                 .getTextureAtlas(InventoryMenu.BLOCK_ATLAS)

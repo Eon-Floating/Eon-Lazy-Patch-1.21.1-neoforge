@@ -118,38 +118,32 @@ public class ExperienceCrystalItem extends Item {
 
     private static int storeExperience(ItemStack stack, Player player) {
         int storedXp = getStoredXp(stack);
-        int freeSpace = MAX_STORED_XP - storedXp;
-        int currentXp = getPlayerTotalXp(player);
-        int targetXp = getXpAfterLosingLevels(player);
-        int transferable = Math.min(Math.min(currentXp - targetXp, freeSpace), currentXp);
-        if (transferable <= 0) {
+        int xpToStore = calculatePlayerStoreAmount(player, storedXp);
+        if (xpToStore <= 0) {
             return 0;
         }
 
-        setPlayerTotalXp(player, currentXp - transferable);
-        setStoredXp(stack, storedXp + transferable);
-        return transferable;
+        setPlayerTotalXp(player, getPlayerTotalXp(player) - xpToStore);
+        setStoredXp(stack, storedXp + xpToStore);
+        return xpToStore;
     }
 
     private static int withdrawExperience(ItemStack stack, Player player) {
         int storedXp = getStoredXp(stack);
-        int currentXp = getPlayerTotalXp(player);
-        int targetXp = getXpAfterGainingLevels(player);
-        int transferLimit = targetXp - currentXp;
-        int transferable = Math.min(storedXp, transferLimit);
-        if (transferable <= 0) {
+        int xpToWithdraw = calculatePlayerWithdrawAmount(player, storedXp);
+        if (xpToWithdraw <= 0) {
             return 0;
         }
 
-        setPlayerTotalXp(player, currentXp + transferable);
-        setStoredXp(stack, storedXp - transferable);
-        return transferable;
+        setPlayerTotalXp(player, getPlayerTotalXp(player) + xpToWithdraw);
+        setStoredXp(stack, storedXp - xpToWithdraw);
+        return xpToWithdraw;
     }
 
     private static int fillFromExperienceFluid(ItemStack stack, UseOnContext context) {
         int storedXp = getStoredXp(stack);
-        int freeSpace = MAX_STORED_XP - storedXp;
-        if (freeSpace <= 0) {
+        int xpFreeSpace = getRemainingCapacity(storedXp);
+        if (xpFreeSpace <= 0) {
             return 0;
         }
 
@@ -162,16 +156,15 @@ public class ExperienceCrystalItem extends Item {
             return 0;
         }
 
-        int maxFluidToDrain = freeSpace * MILLIBUCKETS_PER_XP;
-        FluidStack simulatedDrain = drainExperienceFluid(fluidHandler, maxFluidToDrain, IFluidHandler.FluidAction.SIMULATE);
-        int transferableXp = simulatedDrain.getAmount() / MILLIBUCKETS_PER_XP;
-        if (transferableXp <= 0) {
+        int fluidToDrain = getFluidAmountForXp(xpFreeSpace);
+        FluidStack simulatedDrain = drainExperienceFluid(fluidHandler, fluidToDrain, IFluidHandler.FluidAction.SIMULATE);
+        int xpToFill = getXpFromFluid(simulatedDrain);
+        if (xpToFill <= 0) {
             return 0;
         }
 
-        int fluidToDrain = transferableXp * MILLIBUCKETS_PER_XP;
-        FluidStack drained = drainExperienceFluid(fluidHandler, fluidToDrain, IFluidHandler.FluidAction.EXECUTE);
-        int movedXp = Math.min(transferableXp, drained.getAmount() / MILLIBUCKETS_PER_XP);
+        FluidStack drained = drainExperienceFluid(fluidHandler, getFluidAmountForXp(xpToFill), IFluidHandler.FluidAction.EXECUTE);
+        int movedXp = getXpFromFluid(drained);
         if (movedXp <= 0) {
             return 0;
         }
@@ -202,13 +195,38 @@ public class ExperienceCrystalItem extends Item {
 
     public static int addStoredXp(ItemStack stack, int amount) {
         int storedXp = getStoredXp(stack);
-        int transferable = Math.min(Math.max(amount, 0), MAX_STORED_XP - storedXp);
-        if (transferable <= 0) {
+        int xpToAdd = Math.min(Math.max(amount, 0), getRemainingCapacity(storedXp));
+        if (xpToAdd <= 0) {
             return 0;
         }
 
-        setStoredXp(stack, storedXp + transferable);
-        return transferable;
+        setStoredXp(stack, storedXp + xpToAdd);
+        return xpToAdd;
+    }
+
+    private static int calculatePlayerStoreAmount(Player player, int storedXp) {
+        int freeSpace = getRemainingCapacity(storedXp);
+        int currentXp = getPlayerTotalXp(player);
+        int targetXp = getXpAfterLosingLevels(player);
+        return Math.min(Math.min(currentXp - targetXp, freeSpace), currentXp);
+    }
+
+    private static int calculatePlayerWithdrawAmount(Player player, int storedXp) {
+        int currentXp = getPlayerTotalXp(player);
+        int targetXp = getXpAfterGainingLevels(player);
+        return Math.min(storedXp, targetXp - currentXp);
+    }
+
+    private static int getRemainingCapacity(int storedXp) {
+        return MAX_STORED_XP - storedXp;
+    }
+
+    private static int getFluidAmountForXp(int xp) {
+        return xp * MILLIBUCKETS_PER_XP;
+    }
+
+    private static int getXpFromFluid(FluidStack fluidStack) {
+        return fluidStack.getAmount() / MILLIBUCKETS_PER_XP;
     }
 
     private static void setStoredXp(ItemStack stack, int storedXp) {
