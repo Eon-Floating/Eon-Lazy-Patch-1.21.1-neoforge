@@ -40,3 +40,5 @@ repo/
 !**/src/**/repo/
 /libs/*.jar
 /libs_disabled/*.jar
+block_bench_files/
+gui_references/industrialforegoing_block_refs/
