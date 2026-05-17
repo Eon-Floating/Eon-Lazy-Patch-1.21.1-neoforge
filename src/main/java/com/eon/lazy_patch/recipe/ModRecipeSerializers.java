@@ -16,6 +16,10 @@ public class ModRecipeSerializers {
             RECIPE_SERIALIZERS.register("charged_energy_tablet_constant_generator",
                     () -> new SimpleCraftingRecipeSerializer<>(ChargedEnergyTabletConstantGeneratorRecipe::new));
 
+    public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<CreativeEnergyCubeRecipe>> CREATIVE_ENERGY_CUBE =
+            RECIPE_SERIALIZERS.register("creative_energy_cube",
+                    () -> new SimpleCraftingRecipeSerializer<>(CreativeEnergyCubeRecipe::new));
+
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);
     }

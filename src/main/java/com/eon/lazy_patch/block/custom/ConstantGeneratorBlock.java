@@ -59,7 +59,8 @@ public class ConstantGeneratorBlock extends BaseEntityBlock {
 
     @Override
     protected @NotNull BlockState mirror(@NotNull BlockState state, @NotNull Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
+        Direction facing = state.getValue(FACING);
+        return state.setValue(FACING, mirror.getRotation(facing).rotate(facing));
     }
 
     @Override

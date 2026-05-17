@@ -16,7 +16,7 @@ public class ModBlocks {
             "experience_infuser",
             ExperienceInfuserBlock::new,
             BlockBehaviour.Properties.of()
-                    .strength(3.5f)
+                    .strength(3.5f, 6.0f)
                     .sound(SoundType.METAL)
                     .requiresCorrectToolForDrops()
     );
@@ -24,7 +24,7 @@ public class ModBlocks {
             "constant_generator",
             ConstantGeneratorBlock::new,
             BlockBehaviour.Properties.of()
-                    .strength(3.5f)
+                    .strength(5.0f, 10.0f)
                     .sound(SoundType.METAL)
                     .requiresCorrectToolForDrops()
     );
