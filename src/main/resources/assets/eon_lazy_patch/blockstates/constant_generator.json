@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "eon_lazy_patch:block/constant_generator" },
-    "facing=east": { "model": "eon_lazy_patch:block/constant_generator", "y": 90 },
-    "facing=south": { "model": "eon_lazy_patch:block/constant_generator", "y": 180 },
-    "facing=west": { "model": "eon_lazy_patch:block/constant_generator", "y": 270 }
-  }
-}

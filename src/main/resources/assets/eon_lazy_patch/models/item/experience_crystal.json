@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "eon_lazy_patch:item/experience_crystal"
-  }
-}

@@ -3,6 +3,7 @@ package com.eon.lazy_patch;
 import com.eon.lazy_patch.compat.ae2.AE2Compat;
 import com.eon.lazy_patch.block.ModBlocks;
 import com.eon.lazy_patch.block.entity.ModBlockEntities;
+import com.eon.lazy_patch.data.EonDataGenerators;
 import com.eon.lazy_patch.item.ModCreativeModeTabs;
 import com.eon.lazy_patch.item.ModItems;
 import com.eon.lazy_patch.menu.ModMenuTypes;
@@ -37,6 +38,7 @@ public class EonLazyPatch {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(ModBlockEntities::registerCapabilities);
+        modEventBus.addListener(EonDataGenerators::gatherData);
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);

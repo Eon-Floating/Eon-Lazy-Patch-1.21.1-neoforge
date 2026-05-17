@@ -36,6 +36,7 @@ bin/
 run/
 !**/src/**/run/
 **/src/generated/**/.cache/
+/src/generated/resources/.cache/
 repo/
 !**/src/**/repo/
 /libs/*.jar

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "eon_lazy_patch:experience_infuser",
+    "eon_lazy_patch:constant_generator"
+  ]
+}

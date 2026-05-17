@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "eon_lazy_patch:item/ae2/liquid_dragon_breath_calibration_core"
-  }
-}

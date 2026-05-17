@@ -1,0 +1,64 @@
+{
+  "ambientocclusion": false,
+  "credit": "Based on AE2 drive cell models",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "north",
+          "texture": "#cell",
+          "uv": [
+            12,
+            8,
+            6,
+            10
+          ]
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#cell",
+          "uv": [
+            6,
+            8,
+            12,
+            10
+          ]
+        },
+        "up": {
+          "cullface": "north",
+          "texture": "#cell",
+          "uv": [
+            12,
+            8,
+            6,
+            10
+          ]
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "name": "Cell Backdrop",
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          9,
+          8,
+          8
+        ]
+      },
+      "to": [
+        6,
+        2,
+        2
+      ]
+    }
+  ],
+  "textures": {
+    "cell": "ae2:block/drive/drive_cells",
+    "particle": "ae2:block/drive/drive_cells"
+  }
+}

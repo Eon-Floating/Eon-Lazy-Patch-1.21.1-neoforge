@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "eon_lazy_patch:block/experience_infuser/bottom",
+    "east": "eon_lazy_patch:block/experience_infuser/side",
+    "north": "eon_lazy_patch:block/experience_infuser/side",
+    "particle": "eon_lazy_patch:block/experience_infuser/side",
+    "south": "eon_lazy_patch:block/experience_infuser/side",
+    "up": "eon_lazy_patch:block/experience_infuser/top",
+    "west": "eon_lazy_patch:block/experience_infuser/side"
+  }
+}

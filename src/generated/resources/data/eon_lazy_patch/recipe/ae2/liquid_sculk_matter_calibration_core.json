@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "industrialforegoing"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ifeu"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "ifeu:sculk_gear"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "F": {
+      "item": "ae2:cell_component_64k"
+    },
+    "M": {
+      "item": "industrialforegoing:machine_frame_advanced"
+    },
+    "P": {
+      "item": "industrialforegoing:pink_slime_ingot"
+    }
+  },
+  "pattern": [
+    "DMD",
+    "PCP",
+    "DFD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eon_lazy_patch:ae2/liquid_sculk_matter_calibration_core"
+  }
+}

@@ -29,45 +29,59 @@ public class AE2Items {
 
     public static void prepareRegistrations() {
         INFINITY_LIQUID_SCULK_MATTER_CELL = registerInfinityCell(
-                IFEU_MOD_ID,
+                new String[]{IFEU_MOD_ID, INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/infinity_liquid_sculk_matter_cell",
                 ResourceLocation.fromNamespaceAndPath(IFEU_MOD_ID, "liquid_sculk_matter"));
         INFINITY_LIQUID_DRAGON_BREATH_CELL = registerInfinityCell(
-                IFEU_MOD_ID,
+                new String[]{IFEU_MOD_ID, INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/infinity_liquid_dragon_breath_cell",
                 ResourceLocation.fromNamespaceAndPath(IFEU_MOD_ID, "liquid_dragon_breath"));
         INFINITY_ETHER_GAS_CELL = registerInfinityCell(
-                INDUSTRIAL_FOREGOING_MOD_ID,
+                new String[]{INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/infinity_ether_gas_cell",
                 ResourceLocation.fromNamespaceAndPath(INDUSTRIAL_FOREGOING_MOD_ID, "ether_gas"));
         INFINITY_PINK_SLIME_CELL = registerInfinityCell(
-                INDUSTRIAL_FOREGOING_MOD_ID,
+                new String[]{INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/infinity_pink_slime_cell",
                 ResourceLocation.fromNamespaceAndPath(INDUSTRIAL_FOREGOING_MOD_ID, "pink_slime"));
         LIQUID_SCULK_MATTER_CALIBRATION_CORE = registerCalibrationCore(
-                IFEU_MOD_ID,
+                new String[]{IFEU_MOD_ID, INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/liquid_sculk_matter_calibration_core");
         LIQUID_DRAGON_BREATH_CALIBRATION_CORE = registerCalibrationCore(
-                IFEU_MOD_ID,
+                new String[]{IFEU_MOD_ID, INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/liquid_dragon_breath_calibration_core");
         ETHER_GAS_CALIBRATION_CORE = registerCalibrationCore(
-                INDUSTRIAL_FOREGOING_MOD_ID,
+                new String[]{INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/ether_gas_calibration_core");
         PINK_SLIME_CALIBRATION_CORE = registerCalibrationCore(
-                INDUSTRIAL_FOREGOING_MOD_ID,
+                new String[]{INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/pink_slime_calibration_core");
     }
 
-    private static DeferredItem<Item> registerInfinityCell(String requiredModId, String registryName, ResourceLocation fluidId) {
-        return ModList.get().isLoaded(AE2_MOD_ID) && ModList.get().isLoaded(requiredModId)
+    private static DeferredItem<Item> registerInfinityCell(String[] requiredModIds, String registryName, ResourceLocation fluidId) {
+        return areRequiredModsLoaded(requiredModIds)
                 ? ITEMS.register(registryName, () -> new EonInfinityFluidCellItem(fluidId))
                 : null;
     }
 
-    private static DeferredItem<Item> registerCalibrationCore(String requiredModId, String registryName) {
-        return ModList.get().isLoaded(AE2_MOD_ID) && ModList.get().isLoaded(requiredModId)
+    private static DeferredItem<Item> registerCalibrationCore(String[] requiredModIds, String registryName) {
+        return areRequiredModsLoaded(requiredModIds)
                 ? ITEMS.register(registryName, () -> new StyledNameItem(new Item.Properties(), ChatFormatting.DARK_PURPLE))
                 : null;
+    }
+
+    private static boolean areRequiredModsLoaded(String... requiredModIds) {
+        if (!ModList.get().isLoaded(AE2_MOD_ID)) {
+            return false;
+        }
+
+        for (String requiredModId : requiredModIds) {
+            if (!ModList.get().isLoaded(requiredModId)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public static void register(IEventBus eventBus) {
