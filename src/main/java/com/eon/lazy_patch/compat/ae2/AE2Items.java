@@ -1,6 +1,8 @@
 package com.eon.lazy_patch.compat.ae2;
 
 import com.eon.lazy_patch.EonLazyPatch;
+import com.eon.lazy_patch.item.custom.StyledNameItem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -64,7 +66,7 @@ public class AE2Items {
 
     private static DeferredItem<Item> registerCalibrationCore(String requiredModId, String registryName) {
         return ModList.get().isLoaded(AE2_MOD_ID) && ModList.get().isLoaded(requiredModId)
-                ? ITEMS.register(registryName, () -> new Item(new Item.Properties()))
+                ? ITEMS.register(registryName, () -> new StyledNameItem(new Item.Properties(), ChatFormatting.DARK_PURPLE))
                 : null;
     }
 

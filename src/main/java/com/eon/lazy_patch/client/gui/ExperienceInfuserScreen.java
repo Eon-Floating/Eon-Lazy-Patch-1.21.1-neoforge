@@ -64,7 +64,7 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
     protected void renderBg(@NotNull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int left = leftPos;
         int top = topPos;
-        guiGraphics.blit(MEKANISM_BASE, left, top, 0, 0, imageWidth, imageHeight, 256, 256);
+        drawBasePanel(guiGraphics, left, top);
 
         drawSlot(guiGraphics, left + 140, top + 50);
         drawPlayerInventorySlots(guiGraphics, left, top);
@@ -116,8 +116,8 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
     }
 
     private void drawTankOverlay(GuiGraphics guiGraphics, int x, int y) {
-        guiGraphics.fill(x, y, x + TANK_WIDTH - 1, y + 1, TANK_BORDER_DARK);
-        guiGraphics.fill(x, y, x + 1, y + TANK_HEIGHT - 1, TANK_BORDER_DARK);
+        guiGraphics.fill(x, y, x + TANK_WIDTH, y + 1, TANK_BORDER_DARK);
+        guiGraphics.fill(x, y, x + 1, y + TANK_HEIGHT, TANK_BORDER_DARK);
         guiGraphics.fill(x + 1, y + TANK_HEIGHT - 1, x + TANK_WIDTH, y + TANK_HEIGHT, TANK_BORDER_LIGHT);
         guiGraphics.fill(x + TANK_WIDTH - 1, y + 1, x + TANK_WIDTH, y + TANK_HEIGHT, TANK_BORDER_LIGHT);
         for (int tick = 1; tick <= TANK_TICK_COUNT; tick++) {
@@ -173,5 +173,24 @@ public class ExperienceInfuserScreen extends AbstractContainerScreen<ExperienceI
 
     private Fluid getFluid() {
         return BuiltInRegistries.FLUID.byId(menu.getFluidId());
+    }
+
+    private void drawBasePanel(GuiGraphics guiGraphics, int x, int y) {
+        int border = 4;
+        int innerWidth = imageWidth - border * 2;
+        int innerHeight = imageHeight - border * 2;
+        int sourceEdge = 256 - border;
+
+        guiGraphics.blit(MEKANISM_BASE, x, y, 0, 0, border, border, 256, 256);
+        guiGraphics.blit(MEKANISM_BASE, x + border, y, border, 0, innerWidth, border, 256, 256);
+        guiGraphics.blit(MEKANISM_BASE, x + imageWidth - border, y, sourceEdge, 0, border, border, 256, 256);
+
+        guiGraphics.blit(MEKANISM_BASE, x, y + border, 0, border, border, innerHeight, 256, 256);
+        guiGraphics.blit(MEKANISM_BASE, x + border, y + border, border, border, innerWidth, innerHeight, 256, 256);
+        guiGraphics.blit(MEKANISM_BASE, x + imageWidth - border, y + border, sourceEdge, border, border, innerHeight, 256, 256);
+
+        guiGraphics.blit(MEKANISM_BASE, x, y + imageHeight - border, 0, sourceEdge, border, border, 256, 256);
+        guiGraphics.blit(MEKANISM_BASE, x + border, y + imageHeight - border, border, sourceEdge, innerWidth, border, 256, 256);
+        guiGraphics.blit(MEKANISM_BASE, x + imageWidth - border, y + imageHeight - border, sourceEdge, sourceEdge, border, border, 256, 256);
     }
 }

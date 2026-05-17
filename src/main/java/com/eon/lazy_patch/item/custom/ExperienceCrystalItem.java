@@ -48,6 +48,11 @@ public class ExperienceCrystalItem extends Item {
     }
 
     @Override
+    public @NotNull Component getName(@NotNull ItemStack stack) {
+        return super.getName(stack).copy().withStyle(ChatFormatting.GREEN);
+    }
+
+    @Override
     public @NotNull InteractionResultHolder<ItemStack> use(
             @NotNull Level level,
             @NotNull Player player,

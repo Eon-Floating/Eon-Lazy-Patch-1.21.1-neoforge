@@ -1,6 +1,7 @@
 package com.eon.lazy_patch;
 
 import com.eon.lazy_patch.client.gui.ExperienceInfuserScreen;
+import com.eon.lazy_patch.client.gui.ConstantGeneratorScreen;
 import com.eon.lazy_patch.compat.ae2.AE2ClientCompat;
 import com.eon.lazy_patch.menu.ModMenuTypes;
 import net.minecraft.client.Minecraft;
@@ -40,5 +41,6 @@ public class EonLazyPatchClient {
     @SubscribeEvent
     static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenuTypes.EXPERIENCE_INFUSER.get(), ExperienceInfuserScreen::new);
+        event.register(ModMenuTypes.CONSTANT_GENERATOR.get(), ConstantGeneratorScreen::new);
     }
 }

@@ -3,11 +3,13 @@
 This project includes selected GUI texture assets from the following MIT-licensed mods:
 
 - Mekanism, license declared as MIT in `META-INF/neoforge.mods.toml`.
+- Mekanism Generators, license declared as MIT in `META-INF/neoforge.mods.toml`.
 - Industrial Foregoing, license declared as MIT in `META-INF/neoforge.mods.toml`.
 
 Copied assets are stored under:
 
 - `src/main/resources/assets/eon_lazy_patch/textures/gui/vendor/mekanism/`
+- `src/main/resources/assets/eon_lazy_patch/textures/gui/vendor/mekanismgenerators/`
 - `src/main/resources/assets/eon_lazy_patch/textures/gui/vendor/industrialforegoing/`
 
 The copied assets remain under the MIT License:
@@ -15,7 +17,7 @@ The copied assets remain under the MIT License:
 ```text
 MIT License
 
-Copyright (c) the respective Mekanism and Industrial Foregoing authors and contributors
+Copyright (c) the respective Mekanism, Mekanism Generators, and Industrial Foregoing authors and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

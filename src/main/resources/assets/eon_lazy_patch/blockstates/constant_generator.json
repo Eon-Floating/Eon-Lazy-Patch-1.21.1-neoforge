@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "eon_lazy_patch:block/constant_generator"
+    }
+  }
+}

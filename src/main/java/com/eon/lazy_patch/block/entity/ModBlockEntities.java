@@ -20,6 +20,12 @@ public class ModBlockEntities {
                     ExperienceInfuserBlockEntity::new,
                     ModBlocks.EXPERIENCE_INFUSER.get()
             ).build(null));
+    @SuppressWarnings("DataFlowIssue")
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ConstantGeneratorBlockEntity>> CONSTANT_GENERATOR =
+            BLOCK_ENTITIES.register("constant_generator", () -> BlockEntityType.Builder.of(
+                    ConstantGeneratorBlockEntity::new,
+                    ModBlocks.CONSTANT_GENERATOR.get()
+            ).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
@@ -34,6 +40,16 @@ public class ModBlockEntities {
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 EXPERIENCE_INFUSER.get(),
+                (blockEntity, side) -> blockEntity.getItemHandler()
+        );
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                CONSTANT_GENERATOR.get(),
+                (blockEntity, side) -> blockEntity.getEnergyStorage()
+        );
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                CONSTANT_GENERATOR.get(),
                 (blockEntity, side) -> blockEntity.getItemHandler()
         );
     }

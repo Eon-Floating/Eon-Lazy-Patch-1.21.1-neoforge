@@ -2,6 +2,8 @@
   "item.eon_lazy_patch.misc.eon_star": "Eon Star",
   "item.eon_lazy_patch.experience_crystal": "Experience Crystal",
   "block.eon_lazy_patch.experience_infuser": "Experience Infuser",
+  "item.eon_lazy_patch.constant_generator": "Constant Generator",
+  "block.eon_lazy_patch.constant_generator": "Constant Generator",
   "item.eon_lazy_patch.ae2.infinity_liquid_sculk_matter_cell": "ME Infinity Liquid Sculk Matter Cell",
   "item.eon_lazy_patch.ae2.infinity_liquid_dragon_breath_cell": "ME Infinity Liquid Dragon Breath Cell",
   "item.eon_lazy_patch.ae2.infinity_ether_gas_cell": "ME Infinity Ether Gas Cell",
@@ -18,6 +20,7 @@
   "tooltip.eon_lazy_patch.experience_crystal.sneak_use": "Sneak-use: store up to 30 levels worth of XP.",
   "tooltip.eon_lazy_patch.experience_infuser.fluid": "Experience Fluid",
   "tooltip.eon_lazy_patch.experience_infuser.empty": "Empty",
+  "tooltip.eon_lazy_patch.constant_generator.energy": "Stored Energy",
 
   "eon_lazy_patch.configuration.title": "Eon Lazy Patch Configs",
   "eon_lazy_patch.configuration.section.eon_lazy_patch.common.toml": "Eon Lazy Patch Configs",

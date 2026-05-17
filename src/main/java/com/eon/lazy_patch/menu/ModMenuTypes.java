@@ -18,6 +18,11 @@ public class ModMenuTypes {
                     (IContainerFactory<ExperienceInfuserMenu>) ExperienceInfuserMenu::new,
                     FeatureFlags.VANILLA_SET
             ));
+    public static final DeferredHolder<MenuType<?>, MenuType<ConstantGeneratorMenu>> CONSTANT_GENERATOR =
+            MENU_TYPES.register("constant_generator", () -> new MenuType<>(
+                    (IContainerFactory<ConstantGeneratorMenu>) ConstantGeneratorMenu::new,
+                    FeatureFlags.VANILLA_SET
+            ));
 
     public static void register(IEventBus eventBus) {
         MENU_TYPES.register(eventBus);

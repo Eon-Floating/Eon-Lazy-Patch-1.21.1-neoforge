@@ -6,6 +6,7 @@ import com.eon.lazy_patch.block.entity.ModBlockEntities;
 import com.eon.lazy_patch.item.ModCreativeModeTabs;
 import com.eon.lazy_patch.item.ModItems;
 import com.eon.lazy_patch.menu.ModMenuTypes;
+import com.eon.lazy_patch.recipe.ModRecipeSerializers;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -41,6 +42,7 @@ public class EonLazyPatch {
         ModItems.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+        ModRecipeSerializers.register(modEventBus);
         if (ModList.get().isLoaded("ae2")) {
             AE2Compat.register(modEventBus);
         }
