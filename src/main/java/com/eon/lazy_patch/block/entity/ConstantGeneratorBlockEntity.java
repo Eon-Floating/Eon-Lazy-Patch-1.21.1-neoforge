@@ -124,8 +124,9 @@ public class ConstantGeneratorBlockEntity extends BlockEntity implements MenuPro
     protected void loadAdditional(@NotNull CompoundTag tag, @NotNull HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         itemHandler.deserializeNBT(registries, tag.getCompound(ITEMS_KEY));
-        if (tag.contains(ENERGY_KEY)) {
-            energyStorage.deserializeNBT(registries, tag.get(ENERGY_KEY));
+        var energyTag = tag.get(ENERGY_KEY);
+        if (energyTag != null) {
+            energyStorage.deserializeNBT(registries, energyTag);
         }
     }
 

@@ -136,8 +136,8 @@ public class ConstantGeneratorScreen extends AbstractContainerScreen<ConstantGen
         guiGraphics.blit(MEKANISM_INNER, x, y, 0, 0, INFO_SCREEN_WIDTH, INFO_SCREEN_HEIGHT, 256, 256);
         drawScaledInfoLines(guiGraphics, List.of(
                 Component.literal(formatEnergy(menu.getEnergyStored()) + " / " + formatEnergy(menu.getEnergyCapacity()) + " FE"),
-                Component.literal("\u53d1\u7535: " + formatEnergy(menu.getGenerationRate()) + " FE/t"),
-                Component.literal("\u8f93\u51fa: " + formatEnergy(menu.getOutputRate()) + " FE/t")
+                Component.literal("发电: " + formatEnergy(menu.getGenerationRate()) + " FE/t"),
+                Component.literal("输出: " + formatEnergy(menu.getOutputRate()) + " FE/t")
         ), x + 5, y + 7);
     }
 
@@ -171,8 +171,8 @@ public class ConstantGeneratorScreen extends AbstractContainerScreen<ConstantGen
     private List<Component> energyTooltip() {
         List<Component> tooltip = new ArrayList<>();
         tooltip.add(Component.translatable("tooltip.eon_lazy_patch.constant_generator.energy").withStyle(ChatFormatting.YELLOW));
-        tooltip.add(Component.literal("\u53d1\u7535: " + formatEnergy(menu.getGenerationRate()) + " FE/t").withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.literal("\u8f93\u51fa: " + formatEnergy(menu.getOutputRate()) + " FE/t").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.literal("发电: " + formatEnergy(menu.getGenerationRate()) + " FE/t").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.literal("输出: " + formatEnergy(menu.getOutputRate()) + " FE/t").withStyle(ChatFormatting.GRAY));
         tooltip.add(Component.literal(String.format(Locale.ROOT, "%,d / %,d FE", menu.getEnergyStored(), menu.getEnergyCapacity()))
                 .withStyle(ChatFormatting.GRAY));
         return tooltip;
