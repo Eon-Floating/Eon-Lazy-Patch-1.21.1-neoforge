@@ -2,6 +2,7 @@ package com.eon.lazy_patch.block.entity;
 
 import com.eon.lazy_patch.menu.ConstantGeneratorMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -23,9 +24,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ConstantGeneratorBlockEntity extends BlockEntity implements MenuProvider {
-    public static final int GENERATION_RATE = 256;
-    public static final int OUTPUT_RATE = 1_024;
-    public static final int ENERGY_CAPACITY = 1_000_000;
+    public static final int GENERATION_RATE = 1_024;
+    public static final int OUTPUT_RATE = GENERATION_RATE * 4;
+    public static final int ENERGY_CAPACITY = 4_000_000;
     private static final String ITEMS_KEY = "Items";
     private static final String ENERGY_KEY = "Energy";
 
@@ -78,6 +79,7 @@ public class ConstantGeneratorBlockEntity extends BlockEntity implements MenuPro
         boolean changed = false;
         changed |= blockEntity.energyStorage.addEnergy(GENERATION_RATE) > 0;
         changed |= blockEntity.chargeStoredItem();
+        changed |= blockEntity.outputEnergyToNeighbors(level);
         if (changed) {
             blockEntity.setChangedAndUpdate();
         }
@@ -154,6 +156,46 @@ public class ConstantGeneratorBlockEntity extends BlockEntity implements MenuPro
 
         energyStorage.extractEnergy(received, false);
         return true;
+    }
+
+    private boolean outputEnergyToNeighbors(Level level) {
+        if (energyStorage.getEnergyStored() <= 0) {
+            return false;
+        }
+
+        int remaining = Math.min(OUTPUT_RATE, energyStorage.getEnergyStored());
+        boolean moved = false;
+        for (Direction direction : Direction.values()) {
+            if (remaining <= 0) {
+                break;
+            }
+
+            BlockPos neighborPos = worldPosition.relative(direction);
+            BlockState neighborState = level.getBlockState(neighborPos);
+            BlockEntity neighborBlockEntity = level.getBlockEntity(neighborPos);
+            IEnergyStorage target = level.getCapability(
+                    Capabilities.EnergyStorage.BLOCK,
+                    neighborPos,
+                    neighborState,
+                    neighborBlockEntity,
+                    direction.getOpposite()
+            );
+            if (target == null || !target.canReceive()) {
+                continue;
+            }
+
+            int extracted = energyStorage.extractEnergy(remaining, true);
+            int accepted = target.receiveEnergy(extracted, true);
+            if (accepted <= 0) {
+                continue;
+            }
+
+            energyStorage.extractEnergy(accepted, false);
+            target.receiveEnergy(accepted, false);
+            remaining -= accepted;
+            moved = true;
+        }
+        return moved;
     }
 
     private void setChangedAndUpdate() {

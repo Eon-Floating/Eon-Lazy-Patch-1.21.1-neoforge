@@ -1,9 +1,12 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "bottom": "minecraft:block/iron_block",
-    "side": "minecraft:block/smooth_stone",
-    "top": "minecraft:block/iron_block",
-    "particle": "minecraft:block/smooth_stone"
+    "down": "eon_lazy_patch:block/experience_infuser/bottom",
+    "up": "eon_lazy_patch:block/experience_infuser/top",
+    "north": "eon_lazy_patch:block/constant_generator/front",
+    "south": "eon_lazy_patch:block/constant_generator/side",
+    "east": "eon_lazy_patch:block/constant_generator/side",
+    "west": "eon_lazy_patch:block/constant_generator/side",
+    "particle": "eon_lazy_patch:block/constant_generator/side"
   }
 }
