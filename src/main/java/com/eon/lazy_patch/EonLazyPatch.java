@@ -6,6 +6,7 @@ import com.eon.lazy_patch.block.entity.ModBlockEntities;
 import com.eon.lazy_patch.data.EonDataGenerators;
 import com.eon.lazy_patch.item.ModCreativeModeTabs;
 import com.eon.lazy_patch.item.ModItems;
+import com.eon.lazy_patch.item.material.ModArmorMaterials;
 import com.eon.lazy_patch.menu.ModMenuTypes;
 import com.eon.lazy_patch.recipe.ModRecipeSerializers;
 import org.slf4j.Logger;
@@ -41,6 +42,7 @@ public class EonLazyPatch {
         modEventBus.addListener(EonDataGenerators::gatherData);
 
         ModBlocks.register(modEventBus);
+        ModArmorMaterials.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);

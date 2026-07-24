@@ -8,7 +8,7 @@ version="${mod_version}"
 displayName="${mod_name}"
 authors="Eon"
 description='''
-为休闲整合包准备的轻量补丁模组，提供经验存储、经验灌注、恒能发电、Mekanism 创造能源立方合成，以及 AE2 无限流体元件适配。
+为休闲整合包准备的轻量补丁模组，提供 Eon 终端装备、经验存储、恒能发电、ProjectE EMC 修正，以及 AE2 无限流体元件适配。
 '''
 
 [[mixins]]
@@ -48,6 +48,24 @@ side="BOTH"
 
 [[dependencies.eon_lazy_patch]]
 modId="mekanism"
+type="optional"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.eon_lazy_patch]]
+modId="mysticalagriculture"
+type="optional"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.eon_lazy_patch]]
+modId="projecte"
+type="optional"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.eon_lazy_patch]]
+modId="extendedae"
 type="optional"
 ordering="AFTER"
 side="BOTH"

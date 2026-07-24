@@ -67,6 +67,32 @@ public final class EonDataGenerators {
                       "result": {"id": "eon_lazy_patch:experience_infuser", "count": 1}
                     }
                     """);
+            add("eon_lazy_patch/recipe/eon_pearl.json", """
+                    {
+                      "neoforge:conditions": [
+                        {"type": "neoforge:mod_loaded", "modid": "mysticalagriculture"},
+                        {"type": "neoforge:mod_loaded", "modid": "projecte"}
+                      ],
+                      "type": "minecraft:crafting_shaped",
+                      "category": "misc",
+                      "pattern": ["SRS", "RNR", "SRS"],
+                      "key": {
+                        "S": {"item": "mysticalagriculture:supremium_essence"},
+                        "R": {"item": "projecte:red_matter"},
+                        "N": {"item": "minecraft:nether_star"}
+                      },
+                      "result": {"id": "eon_lazy_patch:eon_pearl", "count": 1}
+                    }
+                    """);
+            addEonSmithingUpgrade("helmet", "helmet");
+            addEonSmithingUpgrade("chestplate", "chestplate");
+            addEonSmithingUpgrade("leggings", "leggings");
+            addEonSmithingUpgrade("boots", "boots");
+            addEonSmithingUpgrade("sword", "sword");
+            addEonSmithingUpgrade("pickaxe", "pickaxe");
+            addEonSmithingUpgrade("axe", "axe");
+            addEonSmithingUpgrade("shovel", "shovel");
+
             add("eon_lazy_patch/recipe/constant_generator.json", customMekanismRecipe("charged_energy_tablet_constant_generator"));
             add("eon_lazy_patch/recipe/creative_energy_cube.json", customMekanismRecipe("creative_energy_cube"));
 
@@ -79,6 +105,18 @@ public final class EonDataGenerators {
             addInfinityCell("liquid_dragon_breath", true);
             addInfinityCell("ether_gas", false);
             addInfinityCell("pink_slime", false);
+        }
+
+        private void addEonSmithingUpgrade(String resultName, String netheriteName) {
+            add("eon_lazy_patch/recipe/eon_%s.json".formatted(resultName), """
+                    {
+                      "type": "minecraft:smithing_transform",
+                      "template": [],
+                      "base": {"item": "minecraft:netherite_%s"},
+                      "addition": {"item": "eon_lazy_patch:eon_pearl"},
+                      "result": {"id": "eon_lazy_patch:eon_%s"}
+                    }
+                    """.formatted(netheriteName, resultName));
         }
 
         private String customMekanismRecipe(String serializerPath) {
@@ -180,6 +218,35 @@ public final class EonDataGenerators {
                       ]
                     }
                     """);
+            add("eon_lazy_patch/tags/block/incorrect_for_eon_tool.json", """
+                    {
+                      "replace": false,
+                      "values": []
+                    }
+                    """);
+
+            addItemTag("minecraft", "swords", "eon_lazy_patch:eon_sword");
+            addItemTag("minecraft", "pickaxes", "eon_lazy_patch:eon_pickaxe");
+            addItemTag("minecraft", "axes", "eon_lazy_patch:eon_axe");
+            addItemTag("minecraft", "shovels", "eon_lazy_patch:eon_shovel");
+            addItemTag("minecraft", "head_armor", "eon_lazy_patch:eon_helmet");
+            addItemTag("minecraft", "chest_armor", "eon_lazy_patch:eon_chestplate");
+            addItemTag("minecraft", "leg_armor", "eon_lazy_patch:eon_leggings");
+            addItemTag("minecraft", "foot_armor", "eon_lazy_patch:eon_boots");
+        }
+
+        private void addItemTag(String namespace, String path, String... values) {
+            String entries = java.util.Arrays.stream(values)
+                    .map(value -> "\"%s\"".formatted(value))
+                    .collect(java.util.stream.Collectors.joining(",\n    "));
+            add("%s/tags/item/%s.json".formatted(namespace, path), """
+                    {
+                      "replace": false,
+                      "values": [
+                        %s
+                      ]
+                    }
+                    """.formatted(entries));
         }
 
         private void add(String path, String json) {
@@ -215,6 +282,15 @@ public final class EonDataGenerators {
             add("lang/en_us.json", """
                     {
                       "item.eon_lazy_patch.misc.eon_star": "Eon Star",
+                      "item.eon_lazy_patch.eon_pearl": "Eon Pearl",
+                      "item.eon_lazy_patch.eon_helmet": "Eon Helmet",
+                      "item.eon_lazy_patch.eon_chestplate": "Eon Chestplate",
+                      "item.eon_lazy_patch.eon_leggings": "Eon Leggings",
+                      "item.eon_lazy_patch.eon_boots": "Eon Boots",
+                      "item.eon_lazy_patch.eon_sword": "Eon Sword",
+                      "item.eon_lazy_patch.eon_pickaxe": "Eon Pickaxe",
+                      "item.eon_lazy_patch.eon_axe": "Eon Axe",
+                      "item.eon_lazy_patch.eon_shovel": "Eon Shovel",
                       "item.eon_lazy_patch.experience_crystal": "Experience Crystal",
                       "block.eon_lazy_patch.experience_infuser": "Experience Infuser",
                       "item.eon_lazy_patch.constant_generator": "Constant Generator",
@@ -248,6 +324,15 @@ public final class EonDataGenerators {
             add("lang/zh_cn.json", """
                     {
                       "item.eon_lazy_patch.misc.eon_star": "Eon 之星",
+                      "item.eon_lazy_patch.eon_pearl": "Eon 珍珠",
+                      "item.eon_lazy_patch.eon_helmet": "Eon 头盔",
+                      "item.eon_lazy_patch.eon_chestplate": "Eon 胸甲",
+                      "item.eon_lazy_patch.eon_leggings": "Eon 护腿",
+                      "item.eon_lazy_patch.eon_boots": "Eon 靴子",
+                      "item.eon_lazy_patch.eon_sword": "Eon 剑",
+                      "item.eon_lazy_patch.eon_pickaxe": "Eon 镐",
+                      "item.eon_lazy_patch.eon_axe": "Eon 斧",
+                      "item.eon_lazy_patch.eon_shovel": "Eon 铲",
                       "item.eon_lazy_patch.experience_crystal": "经验水晶",
                       "block.eon_lazy_patch.experience_infuser": "经验灌注器",
                       "item.eon_lazy_patch.constant_generator": "恒能发电机",
@@ -283,6 +368,15 @@ public final class EonDataGenerators {
         private void addModels() {
             addGeneratedItem("experience_crystal", "eon_lazy_patch:item/experience_crystal");
             addGeneratedItem("misc/eon_star", "eon_lazy_patch:item/misc/eon_star");
+            addGeneratedItem("eon_pearl", "eon_lazy_patch:item/eon_pearl");
+            addGeneratedItem("eon_helmet", "eon_lazy_patch:item/eon_helmet");
+            addGeneratedItem("eon_chestplate", "eon_lazy_patch:item/eon_chestplate");
+            addGeneratedItem("eon_leggings", "eon_lazy_patch:item/eon_leggings");
+            addGeneratedItem("eon_boots", "eon_lazy_patch:item/eon_boots");
+            addHandheldItem("eon_sword");
+            addHandheldItem("eon_pickaxe");
+            addHandheldItem("eon_axe");
+            addHandheldItem("eon_shovel");
             addBlockItem("experience_infuser");
             addBlockItem("constant_generator");
 
@@ -333,6 +427,15 @@ public final class EonDataGenerators {
                       "textures": {"layer0": "%s"}
                     }
                     """.formatted(texture));
+        }
+
+        private void addHandheldItem(String name) {
+            add("models/item/%s.json".formatted(name), """
+                    {
+                      "parent": "minecraft:item/handheld",
+                      "textures": {"layer0": "eon_lazy_patch:item/%s"}
+                    }
+                    """.formatted(name));
         }
 
         private void addBlockItem(String name) {

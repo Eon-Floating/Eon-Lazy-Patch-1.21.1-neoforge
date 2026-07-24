@@ -23,6 +23,15 @@ public class ModCreativeModeTabs {
                     .icon(() -> ModItems.EON_STAR.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.EON_STAR.get());
+                        output.accept(ModItems.EON_PEARL.get());
+                        output.accept(ModItems.EON_HELMET.get());
+                        output.accept(ModItems.EON_CHESTPLATE.get());
+                        output.accept(ModItems.EON_LEGGINGS.get());
+                        output.accept(ModItems.EON_BOOTS.get());
+                        output.accept(ModItems.EON_SWORD.get());
+                        output.accept(ModItems.EON_PICKAXE.get());
+                        output.accept(ModItems.EON_AXE.get());
+                        output.accept(ModItems.EON_SHOVEL.get());
                         output.accept(ModItems.EXPERIENCE_CRYSTAL.get());
                         output.accept(ModItems.EXPERIENCE_INFUSER.get());
                         output.accept(ModItems.CONSTANT_GENERATOR.get());

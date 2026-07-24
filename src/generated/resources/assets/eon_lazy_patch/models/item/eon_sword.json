@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "eon_lazy_patch:item/eon_sword"
+  }
+}

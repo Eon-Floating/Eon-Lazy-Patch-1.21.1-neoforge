@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "projecte"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "R": {
+      "item": "projecte:red_matter"
+    },
+    "S": {
+      "item": "mysticalagriculture:supremium_essence"
+    }
+  },
+  "pattern": [
+    "SRS",
+    "RNR",
+    "SRS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eon_lazy_patch:eon_pearl"
+  }
+}

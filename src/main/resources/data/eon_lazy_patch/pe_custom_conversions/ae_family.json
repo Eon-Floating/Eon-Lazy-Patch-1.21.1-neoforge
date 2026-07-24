@@ -1,0 +1,62 @@
+{
+  "comment": "Pack-specific EMC values for AE2 and ExtendedAE base materials.",
+  "values": {
+    "after": [
+      {
+        "type": "projecte:item",
+        "tag": "c:gems/certus_quartz",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/certus_quartz",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:gems/fluix",
+        "emc_value": 288
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/fluix",
+        "emc_value": 288
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:silicon",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/ender_pearl",
+        "emc_value": 1024
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:gems/entro",
+        "emc_value": 1024
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/entro",
+        "emc_value": 1024
+      },
+      {
+        "type": "projecte:item",
+        "id": "extendedae:entro_shard",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:storage_blocks/entro",
+        "emc_value": 4096
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:ingots/infused_entro",
+        "emc_value": 3936
+      }
+    ]
+  }
+}

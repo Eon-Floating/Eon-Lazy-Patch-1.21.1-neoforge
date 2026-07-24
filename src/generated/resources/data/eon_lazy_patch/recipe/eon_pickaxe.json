@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "eon_lazy_patch:eon_pearl"
+  },
+  "base": {
+    "item": "minecraft:netherite_pickaxe"
+  },
+  "result": {
+    "id": "eon_lazy_patch:eon_pickaxe"
+  },
+  "template": []
+}

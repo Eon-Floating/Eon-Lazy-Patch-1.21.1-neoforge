@@ -7,12 +7,39 @@
 ## 当前版本
 
 - Minecraft: `1.21.1`
-- NeoForge: `21.1.228`
+- NeoForge: `21.1.243`
 - Mod ID: `eon_lazy_patch`
-- Version: `1.0.0-1.21.1`
+- Version: `1.1.0-1.21.1`
 - License: `MIT`
 
 ## 主要内容
+
+### Eon 终端装备
+
+- 添加 Eon 珍珠，配方需要 4 个究极精华、4 个红物质和 1 个下界之星。
+- 添加 Eon 头盔、胸甲、护腿和靴子。
+- 添加 Eon 剑、镐、斧和铲。
+- 装备不可破坏、抗火，并采用面向整合包终局阶段的高属性。
+- 在锻造台中使用对应下界合金装备和 Eon 珍珠进行升级，不需要锻造模板。
+
+Eon 珍珠配方只在同时安装 `Mystical Agriculture` 和 `ProjectE` 时启用。
+
+### ProjectE EMC 适配
+
+为 AE2 和 ExtendedAE 的基础材料提供整合包级 EMC 修正：
+
+| 材料 | EMC |
+| --- | ---: |
+| 赛特斯石英水晶、充能赛特斯石英水晶和赛特斯石英粉 | 256 |
+| 福鲁伊克斯水晶和福鲁伊克斯粉 | 288 |
+| 硅 | 256 |
+| 末影粉 | 1024 |
+| 熵变水晶和熵变粉 | 1024 |
+| 熵变碎片 | 128 |
+| 熵变水晶块 | 4096 |
+| 熵变锭 | 3936 |
+
+熵变种子、芽体和生长簇不提供 EMC，玩家仍需先完成 ExtendedAE 的材料培育流程。
 
 ### 经验系统
 
@@ -85,6 +112,9 @@
 - `Industrial Foregoing`
 - `Industrial Foregoing: More Upgrades`
 - `Mekanism`
+- `Mystical Agriculture`
+- `ProjectE`
+- `ExtendedAE`
 
 ## 开发与构建
 
