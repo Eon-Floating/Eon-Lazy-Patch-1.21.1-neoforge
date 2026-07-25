@@ -29,6 +29,21 @@
       },
       {
         "type": "projecte:item",
+        "tag": "c:storage_blocks/silicon",
+        "emc_value": 2304
+      },
+      {
+        "type": "projecte:item",
+        "id": "ae2:sky_stone_block",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "tag": "c:dusts/sky_stone",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
         "tag": "c:dusts/ender_pearl",
         "emc_value": 1024
       },

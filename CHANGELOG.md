@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.3-1.21.1
+
+### Changed
+
+- 为 ExtendedAE 硅块添加 `2304 EMC`。
+- 为 AE2 陨石和陨石粉添加 `64 EMC`。
+
 ## 1.1.2-1.21.1
 
 ### Added
