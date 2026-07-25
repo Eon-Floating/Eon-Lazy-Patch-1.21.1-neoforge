@@ -105,6 +105,7 @@ public final class EonDataGenerators {
             addInfinityCell("liquid_dragon_breath", true);
             addInfinityCell("ether_gas", false);
             addInfinityCell("pink_slime", false);
+            addInfinityLavaCell();
         }
 
         private void addEonSmithingUpgrade(String resultName, String netheriteName) {
@@ -182,6 +183,26 @@ public final class EonDataGenerators {
                       "result": {"id": "eon_lazy_patch:ae2/infinity_%s_cell", "count": 1}
                     }
                     """.formatted(fluidModId, industrialForegoingCondition, name, name));
+        }
+
+        private void addInfinityLavaCell() {
+            add("eon_lazy_patch/recipe/ae2/infinity_lava_cell.json", """
+                    {
+                      "neoforge:conditions": [
+                        {"type": "neoforge:mod_loaded", "modid": "ae2"}
+                      ],
+                      "type": "minecraft:crafting_shaped",
+                      "category": "misc",
+                      "pattern": ["CLC", "LXL", "III"],
+                      "key": {
+                        "C": {"item": "ae2:quartz_glass"},
+                        "I": {"tag": "c:gems/diamond"},
+                        "L": {"item": "minecraft:lava_bucket"},
+                        "X": {"item": "ae2:cell_component_16k"}
+                      },
+                      "result": {"id": "eon_lazy_patch:ae2/infinity_lava_cell", "count": 1}
+                    }
+                    """);
         }
 
         private void addLootTables() {
@@ -299,6 +320,7 @@ public final class EonDataGenerators {
                       "item.eon_lazy_patch.ae2.infinity_liquid_dragon_breath_cell": "ME Infinity Liquid Dragon Breath Cell",
                       "item.eon_lazy_patch.ae2.infinity_ether_gas_cell": "ME Infinity Ether Gas Cell",
                       "item.eon_lazy_patch.ae2.infinity_pink_slime_cell": "ME Infinity Pink Slime Cell",
+                      "item.eon_lazy_patch.ae2.infinity_lava_cell": "ME Infinity Lava Cell",
                       "item.eon_lazy_patch.ae2.liquid_sculk_matter_calibration_core": "Liquid Sculk Matter Calibration Core",
                       "item.eon_lazy_patch.ae2.liquid_dragon_breath_calibration_core": "Liquid Dragon Breath Calibration Core",
                       "item.eon_lazy_patch.ae2.ether_gas_calibration_core": "Ether Gas Calibration Core",
@@ -341,6 +363,7 @@ public final class EonDataGenerators {
                       "item.eon_lazy_patch.ae2.infinity_liquid_dragon_breath_cell": "ME 无限液态龙息元件",
                       "item.eon_lazy_patch.ae2.infinity_ether_gas_cell": "ME 无限以太气体元件",
                       "item.eon_lazy_patch.ae2.infinity_pink_slime_cell": "ME 无限粉色史莱姆液元件",
+                      "item.eon_lazy_patch.ae2.infinity_lava_cell": "ME 无限熔岩元件",
                       "item.eon_lazy_patch.ae2.liquid_sculk_matter_calibration_core": "液态幽匿物质校准核心",
                       "item.eon_lazy_patch.ae2.liquid_dragon_breath_calibration_core": "液态龙息校准核心",
                       "item.eon_lazy_patch.ae2.ether_gas_calibration_core": "以太气体校准核心",
@@ -389,6 +412,7 @@ public final class EonDataGenerators {
             addInfinityCellModel("liquid_dragon_breath");
             addInfinityCellModel("ether_gas");
             addInfinityCellModel("pink_slime");
+            addInfinityCellModel("lava");
 
             add("models/block/experience_infuser.json", """
                     {

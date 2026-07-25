@@ -10,6 +10,7 @@
   "eon_lazy_patch.configuration.title": "Eon Lazy Patch Configs",
   "item.eon_lazy_patch.ae2.ether_gas_calibration_core": "Ether Gas Calibration Core",
   "item.eon_lazy_patch.ae2.infinity_ether_gas_cell": "ME Infinity Ether Gas Cell",
+  "item.eon_lazy_patch.ae2.infinity_lava_cell": "ME Infinity Lava Cell",
   "item.eon_lazy_patch.ae2.infinity_liquid_dragon_breath_cell": "ME Infinity Liquid Dragon Breath Cell",
   "item.eon_lazy_patch.ae2.infinity_liquid_sculk_matter_cell": "ME Infinity Liquid Sculk Matter Cell",
   "item.eon_lazy_patch.ae2.infinity_pink_slime_cell": "ME Infinity Pink Slime Cell",

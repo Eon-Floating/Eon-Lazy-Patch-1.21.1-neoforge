@@ -22,6 +22,7 @@ public class AE2Items {
     public static DeferredItem<Item> INFINITY_LIQUID_DRAGON_BREATH_CELL;
     public static DeferredItem<Item> INFINITY_ETHER_GAS_CELL;
     public static DeferredItem<Item> INFINITY_PINK_SLIME_CELL;
+    public static DeferredItem<Item> INFINITY_LAVA_CELL;
     public static DeferredItem<Item> LIQUID_SCULK_MATTER_CALIBRATION_CORE;
     public static DeferredItem<Item> LIQUID_DRAGON_BREATH_CALIBRATION_CORE;
     public static DeferredItem<Item> ETHER_GAS_CALIBRATION_CORE;
@@ -44,6 +45,10 @@ public class AE2Items {
                 new String[]{INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/infinity_pink_slime_cell",
                 ResourceLocation.fromNamespaceAndPath(INDUSTRIAL_FOREGOING_MOD_ID, "pink_slime"));
+        INFINITY_LAVA_CELL = registerInfinityCell(
+                new String[0],
+                "ae2/infinity_lava_cell",
+                ResourceLocation.fromNamespaceAndPath("minecraft", "lava"));
         LIQUID_SCULK_MATTER_CALIBRATION_CORE = registerCalibrationCore(
                 new String[]{IFEU_MOD_ID, INDUSTRIAL_FOREGOING_MOD_ID},
                 "ae2/liquid_sculk_matter_calibration_core");

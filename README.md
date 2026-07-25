@@ -9,7 +9,7 @@
 - Minecraft: `1.21.1`
 - NeoForge: `21.1.243`
 - Mod ID: `eon_lazy_patch`
-- Version: `1.1.1-1.21.1`
+- Version: `1.1.2-1.21.1`
 - License: `MIT`
 
 ## 主要内容
@@ -100,6 +100,7 @@ Eon 珍珠配方只在同时安装 `Mystical Agriculture` 和 `ProjectE` 时启�
 - `ME 无限液态龙息元件`
 - `ME 无限以太气体元件`
 - `ME 无限粉色史莱姆液元件`
+- `ME 无限熔岩元件`
 
 每种无限元件由：
 

@@ -16,6 +16,8 @@ public class AE2ClientCompat {
                 "block/drive/infinity_ether_gas_cell");
         registerModelIfPresent(event, AE2Items.INFINITY_PINK_SLIME_CELL,
                 "block/drive/infinity_pink_slime_cell");
+        registerModelIfPresent(event, AE2Items.INFINITY_LAVA_CELL,
+                "block/drive/infinity_lava_cell");
     }
 
     private static void registerModelIfPresent(FMLClientSetupEvent event, DeferredItem<?> item, String modelPath) {
