@@ -2,7 +2,9 @@
   "required": true,
   "package": "com.eon.lazy_patch.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "MysticalCropBlockMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },
